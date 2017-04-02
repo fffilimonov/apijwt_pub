@@ -1,0 +1,9 @@
+{
+	"auths": {},
+	"clouds": {
+		"tcp://us-west-1.hyper.sh:443": {
+			"accesskey": "",
+			"secretkey": ""
+		}
+	}
+}
