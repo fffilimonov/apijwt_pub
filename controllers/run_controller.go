@@ -40,7 +40,6 @@ func RunController(w http.ResponseWriter, r *http.Request, next http.HandlerFunc
 		redisConn3.HappendValue(user, UUID, "{\"Staring\": true}")
 
 		command := []string{
-			"docker",
 			"run",
 			"--rm",
 			"-i",
@@ -55,7 +54,7 @@ func RunController(w http.ResponseWriter, r *http.Request, next http.HandlerFunc
 			"fffilimonov/bohrium",
 		}
 
-	    cmd := exec.Command(command...)
+	    cmd := exec.Command("docker", command...)
 	    stdout, err := cmd.Output()
 
 		fmt.Printf("Err cmd: %v\n", string(err))
