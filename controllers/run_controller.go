@@ -57,7 +57,7 @@ func RunController(w http.ResponseWriter, r *http.Request, next http.HandlerFunc
 	    cmd := exec.Command("docker", command...)
 	    stdout, err := cmd.Output()
 
-		fmt.Printf("Err cmd: %v\n", string(err))
+		fmt.Printf("Err cmd: %v\n", err)
 		fmt.Printf("Ok cmd: %v\n", string(stdout))
 
 		w.Header().Set("Content-Type", "application/json")
