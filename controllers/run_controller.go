@@ -9,6 +9,7 @@ import (
 	"github.com/pborman/uuid"
 	"net/http"
 	"strconv"
+	"os/exec"
 )
 
 func RunController(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
@@ -37,7 +38,29 @@ func RunController(w http.ResponseWriter, r *http.Request, next http.HandlerFunc
 		redisConn3 := redis.Pconnect(3)
 		defer redisConn3.Close()
 		redisConn3.HappendValue(user, UUID, "{\"Staring\": true}")
-//		go hyper.StartBohrium(user, scen, UUID, browser)
+
+		command := []string{
+			"docker",
+			"run",
+			"--rm",
+			"-i",
+			"-e",
+			"USER_ID=" + user,
+			"-e",
+			"SCEN_ID=" + scen,
+			"-e",
+			"RES_ID=" + UUID,
+			"-e",
+			"Browser=" + browser,
+			"fffilimonov/bohrium",
+		}
+
+	    cmd := exec.Command(command...)
+	    stdout, err := cmd.Output()
+
+		fmt.Printf("Err cmd: %v\n", string(err))
+		fmt.Printf("Ok cmd: %v\n", string(stdout))
+
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte(UUID))
