@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"../core/redis"
-	"../hyper"
 	"../services/models"
 	"encoding/json"
 	"fmt"
@@ -38,7 +37,7 @@ func RunController(w http.ResponseWriter, r *http.Request, next http.HandlerFunc
 		redisConn3 := redis.Pconnect(3)
 		defer redisConn3.Close()
 		redisConn3.HappendValue(user, UUID, "{\"Staring\": true}")
-		go hyper.StartBohrium(user, scen, UUID, browser)
+//		go hyper.StartBohrium(user, scen, UUID, browser)
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte(UUID))

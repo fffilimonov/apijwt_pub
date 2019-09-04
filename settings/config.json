@@ -2,5 +2,5 @@
   "PrivateKeyPath": "settings/keys/private_key",
   "PublicKeyPath": "settings/keys/public_key.pub",
   "JWTExpirationDelta": 876000,
-  "RedisHost": "redis-scens"
+  "RedisHost": "127.0.0.1"
 }
