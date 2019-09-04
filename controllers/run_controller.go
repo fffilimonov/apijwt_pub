@@ -41,6 +41,9 @@ func RunController(w http.ResponseWriter, r *http.Request, next http.HandlerFunc
 
 		command := []string{
 			"run",
+			"--add-host=redis-scens:172.17.0.1",
+			"--name	" + UUID,
+			"--shm-size=256m",
 			"-d",
 			"-e",
 			"USER_ID=" + user,
