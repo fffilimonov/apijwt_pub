@@ -41,7 +41,7 @@ func RunController(w http.ResponseWriter, r *http.Request, next http.HandlerFunc
 
 		command := []string{
 			"run",
-			"--rm",
+			"-d",
 			"-e",
 			"USER_ID=" + user,
 			"-e",
