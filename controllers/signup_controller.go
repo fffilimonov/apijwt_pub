@@ -28,7 +28,7 @@ func SignupController(w http.ResponseWriter, r *http.Request) {
 		// w.Write([]byte("exist"))
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(""))∂
+		w.Write([]byte(""))
 	} else {
 		redisConn.HsetValue(requestUser.Username, "Password", requestUser.GetPassword())
 		redisConn.HsetValue(requestUser.Username, "Active", "0")
