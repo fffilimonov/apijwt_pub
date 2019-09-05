@@ -23,9 +23,12 @@ func SignupController(w http.ResponseWriter, r *http.Request) {
 		panic(reer)
 	}
 	if _, ok := hashMap["Password"]; ok {
+		// w.Header().Set("Content-Type", "application/json")
+		// w.WriteHeader(http.StatusUnauthorized)
+		// w.Write([]byte("exist"))
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusUnauthorized)
-		w.Write([]byte("exist"))
+		w.WriteHeader(http.StatusOK)
+		w.Write("")
 	} else {
 		redisConn.HsetValue(requestUser.Username, "Password", requestUser.GetPassword())
 		redisConn.HsetValue(requestUser.Username, "Active", "0")

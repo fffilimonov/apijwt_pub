@@ -51,7 +51,7 @@ func RunController(w http.ResponseWriter, r *http.Request, next http.HandlerFunc
 			"-e",
 			"Browser=" + browser,
 			"--add-host=redis-scens:172.17.0.1",
-			"--shm-size=256m",
+			"-v /dev/shm:/dev/shm	",
 			"fffilimonov/bohrium",
 		}
 
