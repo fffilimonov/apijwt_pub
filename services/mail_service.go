@@ -12,7 +12,7 @@ func SendActivation(requestUser *models.User) (int, []byte) {
 
 	sEnc := b64.URLEncoding.EncodeToString([]byte(requestUser.Username))
 
-	mailjetClient := NewMailjetClient("", "")
+        mailjetClient := NewMailjetClient("4288497679c411092990bf3f48008758", "3392a7f36d15fd94245eba442e62e53c")
 	email := &InfoSendMail{
 		FromEmail: "admin@likeuser.com",
 		FromName:  "Activate Mail",
